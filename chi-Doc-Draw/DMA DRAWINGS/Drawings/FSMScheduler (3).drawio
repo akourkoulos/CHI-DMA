@@ -1,0 +1,800 @@
+<mxfile host="app.diagrams.net" modified="2023-05-24T15:26:54.373Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" etag="h-VtSIbRH95l6SdFqCxt" version="21.3.2" type="device" pages="5">
+  <diagram name="Αντιγραφή από Σελίδα-1" id="8TOjunJTadF_2CANwyZV">
+    <mxGraphModel dx="2389" dy="1927" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="xwjfAA1gbBV-vRXvfQNL-0" />
+        <mxCell id="xwjfAA1gbBV-vRXvfQNL-1" parent="xwjfAA1gbBV-vRXvfQNL-0" />
+        <mxCell id="SthdStkiBSVWKP0qEuOp-22" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;Do nothing until FIFO is not &lt;br&gt;Empty.If FIFO is not Empty try to&lt;br&gt;&amp;nbsp;take control of&amp;nbsp; DescBRAM through DescBRAMArbiter.&lt;/span&gt;&lt;span style=&quot;font-size: 17px;&quot;&gt;If control is obtained read from DescBRAM the Descriptor at the address of FIFO&#39;s pointer&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="xwjfAA1gbBV-vRXvfQNL-1" vertex="1">
+          <mxGeometry x="-12.5" y="40" width="290" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-23" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;If scheduler has control &lt;br&gt;through Arbiter to &lt;br&gt;DescBRAM and command FIFO&lt;br&gt;&amp;nbsp;in CHI-Converter is not FULL ,&lt;br&gt;issue in CHI-Converter chunk new transactions and update Descriptor&#39;s SentBytes Field . Also write AddrPointer in a reg and Dequeue&lt;br&gt;&amp;nbsp;it from FIFO. If command &lt;br&gt;FIFO is Full&amp;nbsp;wait.&amp;nbsp;&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="xwjfAA1gbBV-vRXvfQNL-1" vertex="1">
+          <mxGeometry x="660" y="40" width="290" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-24" value="&lt;font style=&quot;font-size: 23px;&quot;&gt;&lt;b&gt;IdleState&lt;/b&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="xwjfAA1gbBV-vRXvfQNL-1" vertex="1">
+          <mxGeometry x="62.5" y="-15" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-25" value="&lt;b style=&quot;font-size: 23px;&quot;&gt;IssueState&lt;/b&gt;&lt;b style=&quot;font-size: 23px;&quot;&gt;&lt;br&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="xwjfAA1gbBV-vRXvfQNL-1" vertex="1">
+          <mxGeometry x="740" y="-15" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-26" value="&lt;b style=&quot;font-size: 23px;&quot;&gt;WriteBackState&lt;br&gt;&lt;br&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="xwjfAA1gbBV-vRXvfQNL-1" vertex="1">
+          <mxGeometry x="377.5" y="920" width="190" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-27" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="xwjfAA1gbBV-vRXvfQNL-1" source="SthdStkiBSVWKP0qEuOp-22" target="SthdStkiBSVWKP0qEuOp-23" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="90" as="sourcePoint" />
+            <mxPoint x="280" y="40" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="400" y="60" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-28" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;when fifo is not Empty and&lt;br&gt;there is&amp;nbsp; access through&lt;br&gt;DescBRAMArbiter to DescBRAM&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=0;" parent="xwjfAA1gbBV-vRXvfQNL-1" vertex="1">
+          <mxGeometry x="341" width="270" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-29" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" parent="xwjfAA1gbBV-vRXvfQNL-1" source="SthdStkiBSVWKP0qEuOp-23" target="SthdStkiBSVWKP0qEuOp-22" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="170.07999999999993" y="128.52999999999997" as="sourcePoint" />
+            <mxPoint x="504.94000000000005" y="104.41999999999996" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="440" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-30" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="xwjfAA1gbBV-vRXvfQNL-1" source="SthdStkiBSVWKP0qEuOp-31" target="SthdStkiBSVWKP0qEuOp-22" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-31" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;Request from&amp;nbsp; FIFO&#39;s Arbiter to take control of FIFO to write back the AddrPointer of Descriptor because a chunk has been scheduled. Also Read next Descriptor from DescBRAM&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="xwjfAA1gbBV-vRXvfQNL-1" vertex="1">
+          <mxGeometry x="322.5" y="594" width="300" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-32" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;(when Descriptor&#39;s fields&lt;br&gt;SentBytes == BytesToSent and command&lt;br&gt;&amp;nbsp;FIFO&amp;nbsp;is not&amp;nbsp; FULL)or there is not access through &lt;br&gt;DescBRAMArbiterto DescBRAM&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="xwjfAA1gbBV-vRXvfQNL-1" vertex="1">
+          <mxGeometry x="277.5" y="210" width="390" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-33" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0.695;exitY=0.964;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.968;entryY=0.311;entryDx=0;entryDy=0;entryPerimeter=0;" parent="xwjfAA1gbBV-vRXvfQNL-1" source="SthdStkiBSVWKP0qEuOp-23" target="SthdStkiBSVWKP0qEuOp-31" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="639.9962120245873" y="230.7537879754127" as="sourcePoint" />
+            <mxPoint x="889.4198198774097" y="245.23295222282218" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="805" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-34" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=0.281;entryY=0.945;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.782;exitY=0.092;exitDx=0;exitDy=0;exitPerimeter=0;" parent="xwjfAA1gbBV-vRXvfQNL-1" source="SthdStkiBSVWKP0qEuOp-31" target="SthdStkiBSVWKP0qEuOp-23" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="629.06" y="612.5999999999999" as="sourcePoint" />
+            <mxPoint x="590.9899999999998" y="263.49" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="600" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-35" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;when chunk transactions have been scheduled,&lt;br&gt;Descriptor&#39;s fields SentBytes != BytesToSent&lt;br&gt;&amp;nbsp;&amp;nbsp;and&amp;nbsp;comand FIFO&amp;nbsp;is not FULL&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=-52;" parent="xwjfAA1gbBV-vRXvfQNL-1" vertex="1">
+          <mxGeometry x="543" y="467" width="380" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-36" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;&lt;br&gt;pointer of non finished Descripyor wrote back &lt;br&gt;to FIFO&amp;nbsp;and there is control of DescBRAM&amp;nbsp;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=-53;" parent="xwjfAA1gbBV-vRXvfQNL-1" vertex="1">
+          <mxGeometry x="410" y="408" width="360" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=1.001;entryY=0.451;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=17;strokeColor=#000000;strokeWidth=1;curved=1;" parent="xwjfAA1gbBV-vRXvfQNL-1" source="SthdStkiBSVWKP0qEuOp-23" target="SthdStkiBSVWKP0qEuOp-23" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="907" y="20" />
+              <mxPoint x="1030" y="20" />
+              <mxPoint x="1030" y="171" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-38" value="FIFO empty or&lt;br&gt;ther is not access through&lt;br&gt;DescBRAMArbiter to DescBRAM" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=-30;" parent="xwjfAA1gbBV-vRXvfQNL-1" vertex="1">
+          <mxGeometry x="-277.5" y="-15" width="270" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-39" value="command FIFO in CHI-converter is FULL&lt;br&gt;and there is control of DescBRAM" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=45;" parent="xwjfAA1gbBV-vRXvfQNL-1" vertex="1">
+          <mxGeometry x="930" y="40" width="330" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-40" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=17;strokeColor=#000000;strokeWidth=1;entryX=0.898;entryY=0.817;entryDx=0;entryDy=0;entryPerimeter=0;" parent="xwjfAA1gbBV-vRXvfQNL-1" source="SthdStkiBSVWKP0qEuOp-31" target="SthdStkiBSVWKP0qEuOp-31" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="622" y="730" />
+              <mxPoint x="750" y="730" />
+              <mxPoint x="750" y="839" />
+            </Array>
+            <mxPoint x="590" y="830" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-41" value="While cant have control of FIFO" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=30;" parent="xwjfAA1gbBV-vRXvfQNL-1" vertex="1">
+          <mxGeometry x="660" y="740" width="260" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-42" value="&lt;br style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;pointer of non finished Descripotr wrote back&lt;/span&gt;&lt;br style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;to FIFO&amp;nbsp;and there is not control of DescBRAM&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;rotation=65;" parent="xwjfAA1gbBV-vRXvfQNL-1" vertex="1">
+          <mxGeometry x="80" y="475" width="370" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="SthdStkiBSVWKP0qEuOp-43" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="xwjfAA1gbBV-vRXvfQNL-1" source="SthdStkiBSVWKP0qEuOp-22" target="SthdStkiBSVWKP0qEuOp-22" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-100" y="250" as="sourcePoint" />
+            <mxPoint x="-50" y="200" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-100" y="160" />
+              <mxPoint x="-130" y="60" />
+              <mxPoint x="-40" y="10" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Αντιγραφή από Αντιγραφή από Σελίδα-1" id="rGrq_eI5msTbmvj25owc">
+    <mxGraphModel dx="2389" dy="1927" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-0" />
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-1" parent="FSLTZxCBSNdUC3_61sBo-0" />
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-2" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;Try to take access to BRAM and Read Descriptor if access obtained&amp;nbsp;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="FSLTZxCBSNdUC3_61sBo-1" vertex="1">
+          <mxGeometry x="77.5" y="50" width="250" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-3" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;&lt;font style=&quot;font-size: 17px;&quot;&gt;If Scheduler has access to &lt;/font&gt;&lt;br&gt;BRAM and there is space in CHI-Converter, schedule new chunk transactions, and update Descriptor&#39;s SentBytes field. Also, write AddrPointer in register and Dequeue&lt;br&gt;&amp;nbsp;it from FIFO.&amp;nbsp;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="FSLTZxCBSNdUC3_61sBo-1" vertex="1">
+          <mxGeometry x="560" y="50" width="250" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-4" value="&lt;font style=&quot;font-size: 23px;&quot;&gt;&lt;b&gt;IdleState&lt;/b&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="FSLTZxCBSNdUC3_61sBo-1" vertex="1">
+          <mxGeometry x="142.5" y="10" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-5" value="&lt;b style=&quot;font-size: 23px;&quot;&gt;IssueState&lt;/b&gt;&lt;b style=&quot;font-size: 23px;&quot;&gt;&lt;br&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="FSLTZxCBSNdUC3_61sBo-1" vertex="1">
+          <mxGeometry x="615" y="10" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-6" value="&lt;b style=&quot;font-size: 23px;&quot;&gt;WriteBackState&lt;br&gt;&lt;br&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="FSLTZxCBSNdUC3_61sBo-1" vertex="1">
+          <mxGeometry x="350" y="746" width="190" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-7" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="FSLTZxCBSNdUC3_61sBo-1" source="FSLTZxCBSNdUC3_61sBo-2" target="FSLTZxCBSNdUC3_61sBo-3" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="90" as="sourcePoint" />
+            <mxPoint x="280" y="40" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="460" y="60" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-8" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;When FIFO not empty &lt;br&gt;and there is acces to BRAM&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=0;" parent="FSLTZxCBSNdUC3_61sBo-1" vertex="1">
+          <mxGeometry x="330" y="30" width="230" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-9" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=0.883;entryY=0.83;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.118;exitY=0.821;exitDx=0;exitDy=0;exitPerimeter=0;" parent="FSLTZxCBSNdUC3_61sBo-1" source="FSLTZxCBSNdUC3_61sBo-3" target="FSLTZxCBSNdUC3_61sBo-2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="170.07999999999993" y="128.52999999999997" as="sourcePoint" />
+            <mxPoint x="504.94000000000005" y="104.41999999999996" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="440" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-10" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="FSLTZxCBSNdUC3_61sBo-1" source="FSLTZxCBSNdUC3_61sBo-11" target="FSLTZxCBSNdUC3_61sBo-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-11" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;Request for control of FIFO to write back the AddrPointer of Descriptor. Also, read the next Descriptor from BRAM&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="FSLTZxCBSNdUC3_61sBo-1" vertex="1">
+          <mxGeometry x="322.5" y="500" width="246" height="246" as="geometry" />
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-12" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;when Descriptor is fully scheduled &lt;br&gt;or there is not access to&amp;nbsp;BRAM&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="FSLTZxCBSNdUC3_61sBo-1" vertex="1">
+          <mxGeometry x="302.5" y="217" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-13" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0.695;exitY=0.964;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.968;entryY=0.311;entryDx=0;entryDy=0;entryPerimeter=0;" parent="FSLTZxCBSNdUC3_61sBo-1" source="FSLTZxCBSNdUC3_61sBo-3" target="FSLTZxCBSNdUC3_61sBo-11" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="639.9962120245873" y="230.7537879754127" as="sourcePoint" />
+            <mxPoint x="889.4198198774097" y="245.23295222282218" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="700" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-14" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=0.281;entryY=0.945;entryDx=0;entryDy=0;entryPerimeter=0;" parent="FSLTZxCBSNdUC3_61sBo-1" source="FSLTZxCBSNdUC3_61sBo-11" target="FSLTZxCBSNdUC3_61sBo-3" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="629.06" y="612.5999999999999" as="sourcePoint" />
+            <mxPoint x="590.9899999999998" y="263.49" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="530" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-15" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;when a chunk is scheduled but&amp;nbsp;&lt;br&gt;the descriptor is not fully scheduled&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=-55;" parent="FSLTZxCBSNdUC3_61sBo-1" vertex="1">
+          <mxGeometry x="490" y="401" width="290" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-16" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;&lt;br&gt;when the pointer of &lt;br&gt;Descriptor&amp;nbsp;is written back to &lt;br&gt;FIFO&amp;nbsp;and there&amp;nbsp;is access to BRAM&amp;nbsp;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=-55;" parent="FSLTZxCBSNdUC3_61sBo-1" vertex="1">
+          <mxGeometry x="370" y="320" width="290" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=1.001;entryY=0.451;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=17;strokeColor=#000000;strokeWidth=1;curved=1;" parent="FSLTZxCBSNdUC3_61sBo-1" source="FSLTZxCBSNdUC3_61sBo-3" target="FSLTZxCBSNdUC3_61sBo-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="773" y="20" />
+              <mxPoint x="890" y="20" />
+              <mxPoint x="890" y="163" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-18" value="FIFO empty or&lt;br&gt;no control of DescBRAM" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=-30;" parent="FSLTZxCBSNdUC3_61sBo-1" vertex="1">
+          <mxGeometry x="-132.5" y="5" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-19" value="CHI-converter is FULL&lt;br&gt;and there is control of BRAM" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=45;" parent="FSLTZxCBSNdUC3_61sBo-1" vertex="1">
+          <mxGeometry x="790" y="19" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-20" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=17;strokeColor=#000000;strokeWidth=1;entryX=0.898;entryY=0.817;entryDx=0;entryDy=0;entryPerimeter=0;" parent="FSLTZxCBSNdUC3_61sBo-1" source="FSLTZxCBSNdUC3_61sBo-11" target="FSLTZxCBSNdUC3_61sBo-11" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="623" />
+              <mxPoint x="650" y="700" />
+            </Array>
+            <mxPoint x="590" y="726" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-21" value="While there is &lt;br&gt;not control of FIFO" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=40;" parent="FSLTZxCBSNdUC3_61sBo-1" vertex="1">
+          <mxGeometry x="585" y="610" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-22" value="&lt;br style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;when the pointer is written back&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;to&lt;br&gt;&amp;nbsp;FIFO&amp;nbsp;and there is not access to BRAM&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;rotation=70;align=center;" parent="FSLTZxCBSNdUC3_61sBo-1" vertex="1">
+          <mxGeometry x="96" y="397" width="370" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="FSLTZxCBSNdUC3_61sBo-23" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="FSLTZxCBSNdUC3_61sBo-1" source="FSLTZxCBSNdUC3_61sBo-2" target="FSLTZxCBSNdUC3_61sBo-2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-10" y="250" as="sourcePoint" />
+            <mxPoint x="40" y="200" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-10" y="160" />
+              <mxPoint x="-40" y="60" />
+              <mxPoint x="50" y="10" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="aRdJEsLtA7FJsbwPRt0P" name="WRONG">
+    <mxGraphModel dx="2389" dy="1927" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-1" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;startRead = 0&lt;br&gt;ReadyWrite = 0&lt;br&gt;Valid(FIFO) = 0&lt;br&gt;WEControl=01&lt;br&gt;DataControl=0&lt;br&gt;RegWeSig=0&lt;br&gt;CountWE=0&lt;br&gt;Dequeue=0&lt;br&gt;if(DoneWrite==0)&lt;br&gt;AddrControl=0&lt;br&gt;else&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;br&gt;AddrControl=1&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="-22.5" y="50" width="270" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-53" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="324" y="150" as="targetPoint" />
+            <mxPoint x="544" y="160" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-2" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;startRead = 1&lt;br&gt;ReadyWrite = 0&lt;br&gt;Valid(FIFO) = 0&lt;br&gt;WEControl=00&lt;br&gt;DataControl=0&lt;br&gt;RegWeSig=1&lt;br&gt;if(ReadyRead){&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;br&gt;&amp;nbsp; countWE=1&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;if(NextCountIn&amp;gt;=chunk |SB==BTS)&lt;br&gt;Dequeue=1}&lt;br&gt;&amp;nbsp;else&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;{counterWE=0 Dequeue=0}&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="650" y="30" width="290" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-51" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" parent="1" source="1PTF73BAnkKrx9LMiIwm-5" target="1PTF73BAnkKrx9LMiIwm-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-5" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;startRead = 0&lt;br&gt;ReadyWrite = 1&lt;br&gt;Valdi = 1&lt;br&gt;&lt;br&gt;WEControl=11&lt;br&gt;DataControl=1&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="272.5" y="390" width="275" height="275" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-6" value="&lt;font style=&quot;font-size: 23px;&quot;&gt;&lt;b&gt;GetDescAddrState&lt;br&gt;(&lt;/b&gt;Read a new Descripotr from RegSpace&lt;b&gt;)&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="-107.5" y="-40" width="440" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-7" value="&lt;b style=&quot;font-size: 23px;&quot;&gt;StartReadState&lt;br&gt;(&lt;/b&gt;&lt;span style=&quot;font-size: 23px;&quot;&gt;inform CHI-Converter that there is a new ReadReaquest to receive&lt;/span&gt;&lt;b style=&quot;font-size: 23px;&quot;&gt;)&lt;br&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="440" y="-60" width="720" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-9" value="&lt;b style=&quot;font-size: 23px;&quot;&gt;&lt;span style=&quot;font-size: 23px;&quot;&gt;UpdateDescStatusState&lt;/span&gt;&lt;br&gt;&lt;font style=&quot;font-size: 23px;&quot;&gt;(&lt;/font&gt;&lt;/b&gt;&lt;font style=&quot;font-size: 23px;&quot;&gt;DoneWrite==1 =&amp;gt;&amp;nbsp;&lt;font style=&quot;font-size: 23px;&quot;&gt;All transactions of a Desc have been finished so update status field&lt;/font&gt;&lt;/font&gt;&lt;b style=&quot;font-size: 23px;&quot;&gt;)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="-430" y="960" width="910" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-10" value="&lt;b style=&quot;font-size: 23px;&quot;&gt;WriteToFIFOState&lt;br&gt;(&lt;/b&gt;&lt;span style=&quot;font-size: 23px;&quot;&gt;write the DescriptorPointer back to FIFO and Read new Addr from RegSpace&lt;/span&gt;&lt;b style=&quot;font-size: 23px;&quot;&gt;)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="430" y="1010" width="820" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-11" value="&lt;b style=&quot;font-size: 23px;&quot;&gt;WriteToFIFOAndUpdateStatus&lt;br&gt;(&lt;/b&gt;&lt;span style=&quot;font-size: 23px;&quot;&gt;combination of 2 other states&lt;/span&gt;&lt;b style=&quot;font-size: 23px;&quot;&gt;)&lt;br&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="192" y="656" width="350" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-12" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;" parent="1" source="1PTF73BAnkKrx9LMiIwm-1" target="1PTF73BAnkKrx9LMiIwm-2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="80" as="sourcePoint" />
+            <mxPoint x="270" y="30" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="390" y="50" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-13" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;!Empty &amp;amp; !DoneWrite&lt;br&gt;(FIFO is not empty so there is a Descriptor to serve)&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=6;" parent="1" vertex="1">
+          <mxGeometry x="270.5" y="33" width="410" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-14" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=0.948;entryY=0.726;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" parent="1" source="1PTF73BAnkKrx9LMiIwm-2" target="1PTF73BAnkKrx9LMiIwm-1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160.07999999999993" y="118.52999999999997" as="sourcePoint" />
+            <mxPoint x="494.94000000000005" y="94.41999999999996" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="430" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-22" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;startRead = 0&lt;br&gt;ReadyWrite = 1&lt;br&gt;Valdi = 0&lt;br&gt;&lt;br&gt;WEControl=10&lt;br&gt;DataControl=1&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="-127" y="653" width="300" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-23" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;startRead = 0&lt;br&gt;ReadyWrite= 0&lt;br&gt;Valid(FIFO) = 1&lt;br&gt;WEControl=01&lt;br&gt;DataControl=0&lt;br&gt;RegWeSig=0&lt;br&gt;CountWE=0&lt;br&gt;Dequeue=0&lt;br&gt;if(DoneWrite==0 &amp;amp; !Empty)&lt;br&gt;AddrControl=0&lt;br&gt;if(DoneWrite==0 &amp;amp; Empty)&lt;br&gt;AddrControl=2&lt;br&gt;else&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;br&gt;AddrControl=1&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="675" y="710" width="300" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-26" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;SentBytes(SB) == BytesToSent(BTS) &amp;amp; ReadyRead&lt;br&gt;(Every Byte of a Descriptor is sending )&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="260" y="230" width="410" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-28" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0.695;exitY=0.964;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="1PTF73BAnkKrx9LMiIwm-2" target="1PTF73BAnkKrx9LMiIwm-23" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="629.9962120245873" y="220.7537879754127" as="sourcePoint" />
+            <mxPoint x="879.4198198774097" y="235.23295222282218" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="950" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-29" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=0.281;entryY=0.945;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="1PTF73BAnkKrx9LMiIwm-23" target="1PTF73BAnkKrx9LMiIwm-2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="619.06" y="602.5999999999999" as="sourcePoint" />
+            <mxPoint x="580.9899999999998" y="253.49" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="680" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-31" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;NextCountIn&amp;gt;=Chunk &amp;amp; ReadyRead&lt;br&gt;(A chunk of one Descripotr have been served)&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=90;" parent="1" vertex="1">
+          <mxGeometry x="745" y="480" width="370" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-34" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;Ready(FIFO) &amp;amp; !DoneWrite&lt;br&gt;(pointer of non finished Descripotr wrote back to fifo )&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=90;" parent="1" vertex="1">
+          <mxGeometry x="567" y="493" width="420" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-40" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=0.969;entryY=0.698;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.003;exitY=0.562;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="1PTF73BAnkKrx9LMiIwm-23" target="1PTF73BAnkKrx9LMiIwm-22" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="561.5037879754127" y="759.2462120245873" as="sourcePoint" />
+            <mxPoint x="189.9962120245873" y="759.2462120245873" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="390" y="820" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-41" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;Ready(FIFO) &amp;amp; DoneWrite&lt;br&gt;(All transactions of a Desc have been finished and pointer Wrote to FIFO)&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="114" y="875" width="580" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-43" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=0.886;entryY=0.176;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.595;exitY=0.998;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="1PTF73BAnkKrx9LMiIwm-1" target="1PTF73BAnkKrx9LMiIwm-22" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="128.94999999999982" y="263.99000000000007" as="sourcePoint" />
+            <mxPoint x="139.2651116120378" y="602.6999076564359" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="190" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-44" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" parent="1" source="1PTF73BAnkKrx9LMiIwm-22" target="1PTF73BAnkKrx9LMiIwm-1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="66.92000000000007" y="602.05" as="sourcePoint" />
+            <mxPoint x="42.01000000000022" y="260.00000000000006" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-17" y="431.55" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-45" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;DoneWrite&lt;br&gt;(ALL transactions of a Desc have been finished)&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=90;" parent="1" vertex="1">
+          <mxGeometry x="-60" y="476" width="380" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-46" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;Clk&lt;br&gt;(Next Cycle)&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=90;" parent="1" vertex="1">
+          <mxGeometry x="-100" y="420" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-47" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=0.896;entryY=0.816;entryDx=0;entryDy=0;exitX=0.009;exitY=0.406;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" parent="1" source="1PTF73BAnkKrx9LMiIwm-23" target="1PTF73BAnkKrx9LMiIwm-5" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="566.2339069168415" y="752.5145180621603" as="sourcePoint" />
+            <mxPoint x="177.78174593052017" y="782.7817459305202" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="540" y="750" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-48" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=0;exitX=0.99;exitY=0.381;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="1PTF73BAnkKrx9LMiIwm-5" target="1PTF73BAnkKrx9LMiIwm-23" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="551.98" y="682.46" as="sourcePoint" />
+            <mxPoint x="421.94000000000005" y="538.5999999999999" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="670" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-49" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;DoneWrite &amp;amp; !Ready(FIFO)&lt;br&gt;(Cant Write to FIFO yet and&lt;br&gt;all transaction of a Desc finished)&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=57;" parent="1" vertex="1">
+          <mxGeometry x="485" y="669" width="270" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-50" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;!Ready(FIFO)&lt;br&gt;(Cant Write to FIFO yet)&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=60;" parent="1" vertex="1">
+          <mxGeometry x="569" y="560" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-52" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;Redy(FIFO)&lt;br&gt;(pointer Wrote in fifo)&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=60;" parent="1" vertex="1">
+          <mxGeometry x="200" y="310" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-54" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;size=0.5;" parent="1" vertex="1">
+          <mxGeometry x="309" y="120" width="20" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-55" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;size=0.5;" parent="1" vertex="1">
+          <mxGeometry x="549" y="120" width="20" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-56" value="DoneWrite &amp;amp; !ReadyRead" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=0;" parent="1" vertex="1">
+          <mxGeometry x="364" y="130" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="1PTF73BAnkKrx9LMiIwm-57" value="(Not Sure)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="389" y="100" width="80" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="WRONG" id="BY_xlHE7M8Mgi7yGBxcT">
+    <mxGraphModel dx="2389" dy="1927" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-0" />
+        <mxCell id="-SWdZwpVogGghXOh9uPX-1" parent="-SWdZwpVogGghXOh9uPX-0" />
+        <mxCell id="-SWdZwpVogGghXOh9uPX-2" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;Do nothing until FIFO is not &lt;br&gt;Empty.If FIFO is not Empty try to&lt;br&gt;&amp;nbsp;take control of&amp;nbsp; DescBRAM through DescBRAMArbiter.&lt;/span&gt;&lt;span style=&quot;font-size: 17px;&quot;&gt;If control is obtained read from DescBRAM the Descriptor at the address of FIFO&#39;s pointer&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="-12.5" y="40" width="290" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-3" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;if comand FIFO&lt;br&gt;&amp;nbsp;in CHI-converter is not FULL&amp;nbsp;&lt;br&gt;issue in CHI-Converter chunk new transactions and update Descriptor&#39;s SentBytes Field if there is control of BRAM. Also write AddrPointer in a reg and Dequeue&amp;nbsp;it from FIFO. If no control of BRAM write the updated Desc in a reg&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="660" y="40" width="290" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-4" value="&lt;font style=&quot;font-size: 23px;&quot;&gt;&lt;b&gt;IdleState&lt;/b&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="62.5" y="-15" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-5" value="&lt;b style=&quot;font-size: 23px;&quot;&gt;IssueState&lt;/b&gt;&lt;b style=&quot;font-size: 23px;&quot;&gt;&lt;br&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="740" y="-15" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-6" value="&lt;b style=&quot;font-size: 23px;&quot;&gt;WriteBackState&lt;br&gt;&lt;br&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="385.5" y="1076" width="190" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-7" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="-SWdZwpVogGghXOh9uPX-1" source="-SWdZwpVogGghXOh9uPX-2" target="-SWdZwpVogGghXOh9uPX-3" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="90" as="sourcePoint" />
+            <mxPoint x="280" y="40" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="400" y="60" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-8" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;when fifo is not Empty and&lt;br&gt;there is&amp;nbsp; access through&lt;br&gt;DescBRAMArbiter to DescBRAM&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=0;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="341" width="270" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-9" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" parent="-SWdZwpVogGghXOh9uPX-1" source="-SWdZwpVogGghXOh9uPX-3" target="-SWdZwpVogGghXOh9uPX-2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="170.07999999999993" y="128.52999999999997" as="sourcePoint" />
+            <mxPoint x="504.94000000000005" y="104.41999999999996" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="440" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-10" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="-SWdZwpVogGghXOh9uPX-1" source="-SWdZwpVogGghXOh9uPX-11" target="-SWdZwpVogGghXOh9uPX-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-11" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;Request FIFO&#39;sArbiter to take control of FIFO to write back the AddrPointer of Descriptor because a chunk is over. Also Read next Descriptor from RegSpace&amp;nbsp;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="330.5" y="774" width="300" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-12" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;(when Descriptor&#39;s fields&lt;br&gt;SentBytes == BytesToSent and comand&lt;br&gt;&amp;nbsp;FIFO&amp;nbsp;is not&amp;nbsp; FULL)or (there is not access through &lt;br&gt;DescBRAMArbiterto DescBRAM and ComFIFO FULL)&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="257.5" y="210" width="430" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-13" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.968;entryY=0.311;entryDx=0;entryDy=0;entryPerimeter=0;" parent="-SWdZwpVogGghXOh9uPX-1" source="-SWdZwpVogGghXOh9uPX-3" target="-SWdZwpVogGghXOh9uPX-11" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="639.9962120245873" y="230.7537879754127" as="sourcePoint" />
+            <mxPoint x="889.4198198774097" y="245.23295222282218" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="805" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-14" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.782;exitY=0.092;exitDx=0;exitDy=0;exitPerimeter=0;" parent="-SWdZwpVogGghXOh9uPX-1" source="-SWdZwpVogGghXOh9uPX-11" target="-SWdZwpVogGghXOh9uPX-3" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="629.06" y="612.5999999999999" as="sourcePoint" />
+            <mxPoint x="590.9899999999998" y="263.49" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="680" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-15" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;when chunk transactions have been scheduled,&lt;br&gt;Descriptor&#39;s fields SentBytes != BytesToSent&lt;br&gt;&amp;nbsp;&amp;nbsp;and&amp;nbsp;comand FIFO&amp;nbsp;is not FULL&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=-60;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="624" y="555" width="380" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-16" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;&lt;br&gt;pointer of non finished Descripotr wrote back &lt;br&gt;to FIFO&amp;nbsp;and there is control of DescBRAM&amp;nbsp;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=-65;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="530" y="515" width="360" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=1.001;entryY=0.451;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=17;strokeColor=#000000;strokeWidth=1;curved=1;" parent="-SWdZwpVogGghXOh9uPX-1" source="-SWdZwpVogGghXOh9uPX-3" target="-SWdZwpVogGghXOh9uPX-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="907" y="20" />
+              <mxPoint x="1030" y="20" />
+              <mxPoint x="1030" y="171" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-18" value="FIFO empty or&lt;br&gt;ther is not access through&lt;br&gt;DescBRAMArbiter to DescBRAM" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=-30;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="-277.5" y="-15" width="270" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-19" value="comand FIFO in CHI-converter is FULL&lt;br&gt;and there is control of DescBRAM" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=45;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="935" y="40" width="320" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-20" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=17;strokeColor=#000000;strokeWidth=1;entryX=0.898;entryY=0.817;entryDx=0;entryDy=0;entryPerimeter=0;" parent="-SWdZwpVogGghXOh9uPX-1" source="-SWdZwpVogGghXOh9uPX-11" target="-SWdZwpVogGghXOh9uPX-11" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="910" />
+              <mxPoint x="758" y="910" />
+              <mxPoint x="758" y="1019" />
+            </Array>
+            <mxPoint x="598" y="1010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-21" value="While cant have control of FIFO" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=30;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="668" y="920" width="260" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-22" value="&lt;br style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;pointer of non finished Descripotr wrote back&lt;/span&gt;&lt;br style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;to FIFO&amp;nbsp;and there is not control of RegSpace&amp;nbsp;&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;rotation=70;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="-7.5" y="530" width="370" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="-SWdZwpVogGghXOh9uPX-23" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="-SWdZwpVogGghXOh9uPX-1" source="-SWdZwpVogGghXOh9uPX-2" target="-SWdZwpVogGghXOh9uPX-2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-100" y="250" as="sourcePoint" />
+            <mxPoint x="-50" y="200" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-100" y="160" />
+              <mxPoint x="-130" y="60" />
+              <mxPoint x="-40" y="10" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CErqc5CeCNw8_Jjgi7p5-3" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.253;exitY=0.947;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;fontSize=17;startArrow=none;startFill=0;exitPerimeter=0;" parent="-SWdZwpVogGghXOh9uPX-1" source="-SWdZwpVogGghXOh9uPX-3" target="CErqc5CeCNw8_Jjgi7p5-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CErqc5CeCNw8_Jjgi7p5-4" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.453;entryY=0.001;entryDx=0;entryDy=0;fontSize=17;startArrow=none;startFill=0;entryPerimeter=0;" parent="-SWdZwpVogGghXOh9uPX-1" source="CErqc5CeCNw8_Jjgi7p5-2" target="-SWdZwpVogGghXOh9uPX-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CErqc5CeCNw8_Jjgi7p5-5" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0.735;entryY=0.962;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=17;startArrow=none;startFill=0;" parent="-SWdZwpVogGghXOh9uPX-1" source="CErqc5CeCNw8_Jjgi7p5-2" target="-SWdZwpVogGghXOh9uPX-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CErqc5CeCNw8_Jjgi7p5-2" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;Wait or schedule transactions until controll of BRAM re-obtained.When there is control of BRAM update Descin BRAM&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="325" y="374" width="290" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="CErqc5CeCNw8_Jjgi7p5-6" value="&lt;font style=&quot;font-size: 23px;&quot;&gt;&lt;b&gt;NoBRAMCon&lt;/b&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="385" y="340" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CErqc5CeCNw8_Jjgi7p5-7" value="there is no &lt;br&gt;control of BRAM and &lt;br&gt;commandFIFO !FULL" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=-35;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="540" y="307" width="190" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="CErqc5CeCNw8_Jjgi7p5-8" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;when Descriptor&#39;s fields&lt;/span&gt;&lt;br style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;SentBytes == BytesToSent&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontSize=17;rotation=30;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="150.5" y="372" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fcKIHDDf3X3wREvOYzg_-0" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; text-align: center; background-color: rgb(248, 249, 250); float: none; display: inline !important;&quot;&gt;when Descriptor&#39;s&lt;br&gt;&amp;nbsp;fields&lt;/span&gt;&lt;br style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; text-align: center; background-color: rgb(248, 249, 250);&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; text-align: center; background-color: rgb(248, 249, 250); float: none; display: inline !important;&quot;&gt;SentBytes &lt;br&gt;!= BytesToSent&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontSize=17;rotation=-60;" parent="-SWdZwpVogGghXOh9uPX-1" vertex="1">
+          <mxGeometry x="310" y="670" width="130" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="WRONG" id="APmhx5kvkgMdoi-jsGXC">
+    <mxGraphModel dx="2389" dy="1927" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="imq7RX9DM0_miiSg9BYl-0" />
+        <mxCell id="imq7RX9DM0_miiSg9BYl-1" parent="imq7RX9DM0_miiSg9BYl-0" />
+        <mxCell id="imq7RX9DM0_miiSg9BYl-2" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;Do nothing until FIFO is not &lt;br&gt;Empty.If FIFO is not Empty try&lt;br&gt;&amp;nbsp;to take control of BRAM.&lt;/span&gt;&lt;span style=&quot;font-size: 17px;&quot;&gt;If control is obtained read from BRAM the Descriptor at the address of FIFO&#39;s pointer,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 17px;&quot;&gt;write &lt;br&gt;AddrPointer in a reg and&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 17px;&quot;&gt;&lt;br&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 17px;&quot;&gt;&amp;nbsp;and&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 17px;&quot;&gt;Dequeue&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 17px;&quot;&gt;pointer from FIFO&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="-12.5" y="40" width="290" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-2" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0;entryDx=0;entryDy=0;exitX=0.562;exitY=1.002;exitDx=0;exitDy=0;exitPerimeter=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="imq7RX9DM0_miiSg9BYl-3" target="bdU3YxCgUPgJ75dMRmRx-0" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="805" y="340" as="sourcePoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-7" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.769;exitY=0.932;exitDx=0;exitDy=0;exitPerimeter=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="imq7RX9DM0_miiSg9BYl-3" target="bdU3YxCgUPgJ75dMRmRx-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="imq7RX9DM0_miiSg9BYl-3" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;if there is control&lt;br&gt;&amp;nbsp;of BRAM&amp;nbsp;and comand FIFO&lt;br&gt;&amp;nbsp;in&amp;nbsp;CHI-converter is not FULL&amp;nbsp;&lt;br&gt;schedule a new&amp;nbsp; transaction and update Descriptor&#39;s SentBytes Field by adding 2x transaction&#39;s bytes&lt;/span&gt;&lt;span style=&quot;font-size: 17px;&quot;&gt;&lt;br&gt;.if there is no control of BRAM schedule a single transaction Also write Desc and next transaction &lt;br&gt;in a reg. If comand &lt;br&gt;FIFO&amp;nbsp;is Full&amp;nbsp;wait. &amp;nbsp;&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="660" y="40" width="290" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="imq7RX9DM0_miiSg9BYl-4" value="&lt;font style=&quot;font-size: 23px;&quot;&gt;&lt;b&gt;IdleState&lt;/b&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="62.5" y="-15" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="imq7RX9DM0_miiSg9BYl-5" value="&lt;b style=&quot;font-size: 23px;&quot;&gt;DoubleScheduleState&lt;/b&gt;&lt;b style=&quot;font-size: 23px;&quot;&gt;&lt;br&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="675" y="-15" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="imq7RX9DM0_miiSg9BYl-6" value="&lt;b style=&quot;font-size: 23px;&quot;&gt;WriteBack&amp;amp;&lt;br&gt;BRAMconState&lt;br&gt;&lt;br&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="184" y="1116.2" width="190" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="imq7RX9DM0_miiSg9BYl-7" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="imq7RX9DM0_miiSg9BYl-2" target="imq7RX9DM0_miiSg9BYl-3" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="90" as="sourcePoint" />
+            <mxPoint x="280" y="40" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="400" y="60" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="imq7RX9DM0_miiSg9BYl-8" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;when fifo is not Empty and&lt;br&gt;ther is&amp;nbsp; access through&lt;br&gt;BRAMArbiter to BRAM&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=0;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="366" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="imq7RX9DM0_miiSg9BYl-9" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=0.984;entryY=0.637;entryDx=0;entryDy=0;exitX=0.023;exitY=0.637;exitDx=0;exitDy=0;entryPerimeter=0;exitPerimeter=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="imq7RX9DM0_miiSg9BYl-3" target="imq7RX9DM0_miiSg9BYl-2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="170.07999999999993" y="128.52999999999997" as="sourcePoint" />
+            <mxPoint x="504.94000000000005" y="104.41999999999996" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="450" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-14" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=0.732;exitY=0.067;exitDx=0;exitDy=0;exitPerimeter=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="imq7RX9DM0_miiSg9BYl-11" target="bdU3YxCgUPgJ75dMRmRx-0" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-38" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontSize=17;startArrow=none;startFill=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="imq7RX9DM0_miiSg9BYl-11" target="imq7RX9DM0_miiSg9BYl-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-52" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;fontSize=17;startArrow=none;startFill=0;entryX=0.761;entryY=0.933;entryDx=0;entryDy=0;entryPerimeter=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="imq7RX9DM0_miiSg9BYl-11" target="bdU3YxCgUPgJ75dMRmRx-44" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="82" y="810" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="imq7RX9DM0_miiSg9BYl-11" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;Request FIFO&#39;sArbiter to take &lt;br&gt;control&amp;nbsp;of FIFO to write back the AddrPointer of Descriptor. if comand fifo not full shcedule a new transaction and update BRAM.if there is control of FIFO dequeue first pointer and write it in reg.&lt;/span&gt;&lt;span style=&quot;font-size: 17px;&quot;&gt;Write Desc in Reg&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="114" y="821.2" width="300" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="imq7RX9DM0_miiSg9BYl-12" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;(when Descriptor&#39;s fields SentBytes ==&lt;br&gt;&amp;nbsp;BytesToSent wih single or without schedule&lt;br&gt;&amp;nbsp;transaction and comand&amp;nbsp;FIFO&amp;nbsp;is not&amp;nbsp; FULL &lt;br&gt;and there is control of BRAM)&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="295" y="145" width="350" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="imq7RX9DM0_miiSg9BYl-13" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0.051;exitY=0.716;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="bdU3YxCgUPgJ75dMRmRx-4" target="imq7RX9DM0_miiSg9BYl-11" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="639.9962120245873" y="230.7537879754127" as="sourcePoint" />
+            <mxPoint x="889.4198198774097" y="245.23295222282218" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="imq7RX9DM0_miiSg9BYl-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=1.001;entryY=0.451;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=17;strokeColor=#000000;strokeWidth=1;curved=1;" parent="imq7RX9DM0_miiSg9BYl-1" source="imq7RX9DM0_miiSg9BYl-3" target="imq7RX9DM0_miiSg9BYl-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="907" y="20" />
+              <mxPoint x="1030" y="20" />
+              <mxPoint x="1030" y="171" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="imq7RX9DM0_miiSg9BYl-18" value="FIFO empty or&lt;br&gt;ther is not access through&lt;br&gt;RegSpaceArbiter to RegSpace" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=-30;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="-272.5" y="-15" width="260" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="imq7RX9DM0_miiSg9BYl-19" value="comandFIFO is FULL&lt;br&gt;and there is control of BRAM or&amp;nbsp;&lt;br&gt;FIFO Empty" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=45;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="920" y="5" width="270" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="imq7RX9DM0_miiSg9BYl-23" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="imq7RX9DM0_miiSg9BYl-2" target="imq7RX9DM0_miiSg9BYl-2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-100" y="250" as="sourcePoint" />
+            <mxPoint x="-50" y="200" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-100" y="160" />
+              <mxPoint x="-130" y="60" />
+              <mxPoint x="-40" y="10" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-3" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.271;entryY=0.957;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.643;exitY=0.012;exitDx=0;exitDy=0;exitPerimeter=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="bdU3YxCgUPgJ75dMRmRx-0" target="imq7RX9DM0_miiSg9BYl-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-0" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;schedule transactions through desc&lt;br&gt;Register as long as there is no&lt;br&gt;control of BRAM and comand FIFO is not FULL.UpdateBRAM when control obtained&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="400" y="430" width="290" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-1" value="&lt;b style=&quot;font-size: 23px;&quot;&gt;NoBRAMCon&lt;br&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="460" y="730" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-13" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0.979;entryY=0.678;entryDx=0;entryDy=0;entryPerimeter=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="bdU3YxCgUPgJ75dMRmRx-4" target="bdU3YxCgUPgJ75dMRmRx-0" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1353.940861785095" y="658.2248240490076" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-29" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.699;exitY=0.042;exitDx=0;exitDy=0;entryX=1;entryY=0.606;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=17;exitPerimeter=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="bdU3YxCgUPgJ75dMRmRx-4" target="imq7RX9DM0_miiSg9BYl-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-4" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;if there is control of BRAM Read &lt;br&gt;next Descriptor from BRAM&lt;br&gt;and schedule one more transaction&lt;br&gt;.If it is the last transaction&lt;br&gt;&amp;nbsp;and there is control of BRAM dequeue addrPointer and Write it in reg&amp;nbsp;&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="751" y="657" width="290" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-15" value="&lt;b style=&quot;font-size: 23px;&quot;&gt;NextReadState&lt;/b&gt;&lt;b style=&quot;font-size: 23px;&quot;&gt;&lt;br&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="801" y="962" width="190" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="imq7RX9DM0_miiSg9BYl-21" value="While cant have control of FIFO&amp;nbsp;&lt;br&gt;and have BRAM control" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=30;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="-71" y="1051.2" width="270" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-21" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0.646;exitY=0.023;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="imq7RX9DM0_miiSg9BYl-11" target="imq7RX9DM0_miiSg9BYl-3" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="110" y="460" as="sourcePoint" />
+            <mxPoint x="160" y="410" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="340" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-24" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;no BRAM control&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=-40;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="629" y="385" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-25" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;there is BRAM control&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=-35;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="545" y="353" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-26" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;there is BRAM control and &lt;br&gt;comandFIFO not FULL&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=90;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="795" y="410" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-27" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;no BRAM control &lt;br&gt;and not last trans&lt;br&gt;and comandFIFO&amp;nbsp;&lt;br&gt;not FULL&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=35;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="680" y="580" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-28" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;there is BRAM control and not last trans&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=-15;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="430" y="870" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-30" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;when Descriptor&#39;s fields SentBytes==&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;&amp;nbsp;BytesToSent&lt;br&gt;and there is BRAM control&lt;br&gt;&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontSize=17;rotation=90;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="775" y="440" width="400" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-31" value="" style="curved=1;endArrow=classic;html=1;rounded=0;fontSize=17;exitX=0.97;exitY=0.328;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.716;entryY=0.049;entryDx=0;entryDy=0;entryPerimeter=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="bdU3YxCgUPgJ75dMRmRx-4" target="imq7RX9DM0_miiSg9BYl-2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1210" y="310" as="sourcePoint" />
+            <mxPoint x="1260" y="260" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1670" y="-470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-32" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; text-align: center; background-color: rgb(248, 249, 250); float: none; display: inline !important;&quot;&gt;when Descriptor&#39;s fields SentBytes==&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; text-align: center; background-color: rgb(248, 249, 250); float: none; display: inline !important;&quot;&gt;&amp;nbsp;BytesToSent&lt;br&gt;and there is not BRAM control&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontSize=17;rotation=93;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="1040" y="260" width="410" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-33" value="there is control of FIFO and BRAM" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=-45;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="295" y="383" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-34" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 249, 250); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;there is control of &lt;br&gt;FIFO and not &lt;br&gt;of BRAM&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontSize=17;rotation=-60;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="344" y="742.19" width="138.5" height="44.81" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.935;entryY=0.774;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=17;strokeColor=#000000;strokeWidth=1;curved=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="bdU3YxCgUPgJ75dMRmRx-4" target="bdU3YxCgUPgJ75dMRmRx-4" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1181" y="802" />
+              <mxPoint x="1181" y="882" />
+            </Array>
+            <mxPoint x="1201" y="757" as="sourcePoint" />
+            <mxPoint x="1253.84" y="867.79" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-37" value="comand FIFO FULL&lt;br&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=15;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="1091" y="787" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-39" value="there is control of FIFO and BRAM and&lt;br&gt;&amp;nbsp;SentBytes==BytesToSent" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=80;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="55" y="448" width="320" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-46" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.945;exitY=0.754;exitDx=0;exitDy=0;fontSize=17;startArrow=none;startFill=0;exitPerimeter=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="bdU3YxCgUPgJ75dMRmRx-44" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="375" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-50" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=17;startArrow=none;startFill=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="bdU3YxCgUPgJ75dMRmRx-44" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="333" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-51" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;fontSize=17;startArrow=none;startFill=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="bdU3YxCgUPgJ75dMRmRx-44" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="178" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-53" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.542;exitY=1.006;exitDx=0;exitDy=0;entryX=0.021;entryY=0.344;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=17;startArrow=none;startFill=0;exitPerimeter=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="bdU3YxCgUPgJ75dMRmRx-44" target="imq7RX9DM0_miiSg9BYl-11" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-6" y="838.2" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-44" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;Request FIFO&#39;sArbiter to take&lt;br&gt;&amp;nbsp;control of FIFO to write back the AddrPointer of Descriptor. if comand fifo not full shcedule a new transaction and update Descriptor in Reg.if controlo of BRAM obtained update BRAM.if there is control of FIFO dequeue first pointer and &lt;br&gt;write it in reg.&lt;/span&gt;&lt;span style=&quot;font-size: 17px;&quot;&gt;&lt;br&gt;&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="-180" y="487" width="300" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-48" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fontSize=17;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=classic;startFill=1;entryX=0;entryY=1;entryDx=0;entryDy=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="imq7RX9DM0_miiSg9BYl-11" target="imq7RX9DM0_miiSg9BYl-11" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="64" y="971.2" />
+              <mxPoint x="64" y="1077.2" />
+            </Array>
+            <mxPoint x="103" y="1011.2" as="targetPoint" />
+            <mxPoint x="123.99999999999955" y="951.2" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-54" value="&lt;b style=&quot;font-size: 23px;&quot;&gt;WriteBack&amp;amp;&lt;br&gt;NoBRAMconState&lt;br&gt;&lt;br&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="-140" y="410" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-55" value="no control of &lt;br&gt;BRAM and FIFO" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=45;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="49" y="785" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-58" value="no control of &lt;br&gt;&amp;nbsp;FIFO and BRAM con" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=45;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="-28" y="818.2" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-59" value="While cant have control of FIFO&amp;nbsp;&lt;br&gt;and have not BRAM control" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;rotation=30;" parent="imq7RX9DM0_miiSg9BYl-1" vertex="1">
+          <mxGeometry x="-341" y="817" width="270" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="bdU3YxCgUPgJ75dMRmRx-60" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.067;exitY=0.756;exitDx=0;exitDy=0;fontSize=17;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=classic;startFill=1;entryX=0.34;entryY=0.987;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" parent="imq7RX9DM0_miiSg9BYl-1" source="bdU3YxCgUPgJ75dMRmRx-44" target="bdU3YxCgUPgJ75dMRmRx-44" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-210" y="714" />
+              <mxPoint x="-210" y="840" />
+              <mxPoint x="-78" y="840" />
+            </Array>
+            <mxPoint x="147.93398282200997" y="1087.2660171779903" as="targetPoint" />
+            <mxPoint x="103.99999999999409" y="981.1999999999998" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
