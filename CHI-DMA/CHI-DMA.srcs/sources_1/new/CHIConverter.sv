@@ -41,16 +41,14 @@ module CHIConverter#(
   parameter BRAM_COL_WIDTH     = 32                                     ,
 //-----------------------------FIFOs-Parameters--------------------------- 
   parameter CMD_FIFO_LENGTH    = 32                                     ,
-  parameter DATA_FIFO_LENGTH   = 32                                     ,
-  parameter SIZE_WIDTH         = BRAM_ADDR_WIDTH + 7 + 1                , //DescAddr*BRAM_ADDR_WIDTH + Size*(log2(CHI_DATA_WIDTH) + 1) + LastDescTrans*1 
-  parameter COUNTER_WIDTH      = $clog2(DATA_FIFO_LENGTH) + 1           , //log2(DATA_FIFO_LENGTH) + 1 , Width of counter that counts free space of Data-DBID FIFO
+  parameter DBID_FIFO_LENGTH   = 32                                     ,
 //-----------------------------CHI-Parameters----------------------------- 
   parameter MEM_ADDR_WIDTH     = 44                                     , 
   parameter CHI_DATA_WIDTH     = 64                                     , //Bytes
   parameter ADDR_WIDTH_OF_DATA = $clog2(CHI_DATA_WIDTH)                 , // log2(CHI_DATA_WIDTH)  
-  parameter QoS                = 8                                      , //??
-  parameter TgtID              = 2                                      , //??
-  parameter SrcID              = 1                                        //??
+  parameter QoS                = 8                                      , 
+  parameter TgtID              = 2                                      , 
+  parameter SrcID              = 1                                        
 //--------------------------------------------------------------------------  
 
 )(
@@ -83,49 +81,49 @@ module CHIConverter#(
     );                         
     
    // Command FIFO signals
-   wire                                             SigDeqCommand     ; // Dequeue
-   CHI_Command                                      SigCommand        ; // DATA
-   wire                                             SigCommandEmpty   ; // Empty
+   wire                                                    SigDeqCommand     ; // Dequeue
+   CHI_Command                                             SigCommand        ; // DATA
+   wire                                                    SigCommandEmpty   ; // Empty
    //DBID FIFO signals
-   CHI_FIFO_DBID_Packet                             SigDBIDFIFOIn     ; // DATA In
-   CHI_FIFO_DBID_Packet                             SigDBIDPack       ; // DATA Out
-   wire                                             SigEnqDBID        ;
-   wire                                             SigDBIDEmpty      ; //Empty
+   CHI_FIFO_DBID_Packet                                    SigDBIDFIFOIn     ; // DATA In
+   CHI_FIFO_DBID_Packet                                    SigDBIDPack       ; // DATA Out
+   wire                                                    SigEnqDBID        ;
+   wire                                                    SigDBIDEmpty      ; //Empty
    //TxnID registers
-   reg                  [`TxnIDWidth           : 0] NextReadTxnID     ; // The next TxnID that can be used for a Read
-   reg                  [`TxnIDWidth           : 0] FreeReadTxnID     ; // Number of available TxnID for Read    
-   reg                  [`TxnIDWidth           : 0] NextWriteTxnID    ; // The next TxnID that can be used for a Write
-   reg                  [`TxnIDWidth           : 0] FreeWriteTxnID    ; // Number of available TxnID for Write        
-   //register for counting Requested Bytes
-   reg                  [MEM_ADDR_WIDTH   - 1  : 0] ReadReqBytes      ; // Used to Count Bytes Requested from first element of FIFO
-   reg                  [MEM_ADDR_WIDTH   - 1  : 0] WriteReqBytes     ; // Used to Count Bytes Requested from first element of FIFO
-   //Credits 
-   reg                  [`CrdRegWidth     - 1 : 0]  ReqCrd            ;
-   reg                  [`CrdRegWidth     - 1 : 0]  RspCrdInbound     ;
-   reg                  [`CrdRegWidth     - 1 : 0]  RspCrdOutbound    ;// CHI allows max 15 Crds per chanel
-   reg                  [`CrdRegWidth     - 1 : 0]  DataCrdOutbound   ;
-   reg                  [COUNTER_WIDTH    - 1 : 0]  GivenRspCrd       ; // Used in order not to give more Crds than  DATA_FIFO_LENGTH
+   reg                  [`TxnIDWidth                  : 0] NextReadTxnID     ; // The next TxnID that can be used for a Read
+   reg                  [`TxnIDWidth                  : 0] FreeReadTxnID     ; // Number of available TxnID for Read    
+   reg                  [`TxnIDWidth                  : 0] NextWriteTxnID    ; // The next TxnID that can be used for a Write
+   reg                  [`TxnIDWidth                  : 0] FreeWriteTxnID    ; // Number of available TxnID for Write        
+   //register for counting Requested Bytes       
+   reg                  [MEM_ADDR_WIDTH          - 1  : 0] ReadReqBytes      ; // Used to Count Bytes Requested from first element of FIFO
+   reg                  [MEM_ADDR_WIDTH          - 1  : 0] WriteReqBytes     ; // Used to Count Bytes Requested from first element of FIFO
+   //Credits
+   reg                  [`CrdRegWidth            - 1 : 0]  ReqCrd            ;
+   reg                  [`CrdRegWidth            - 1 : 0]  RspCrdInbound     ;
+   reg                  [`CrdRegWidth            - 1 : 0]  RspCrdOutbound    ;// CHI allows max 15 Crds per chanel
+   reg                  [`CrdRegWidth            - 1 : 0]  DataCrdOutbound   ;
+   reg                  [$clog2(DBID_FIFO_LENGTH)    : 0]  GivenRspCrd       ; // Used in order not to give more Crds than  DBID_FIFO_LENGTH ; //$clog2(DBID_FIFO_LENGTH)  = log2(DBID_FIFO_LENGTH) + 1 , Width of counter that counts free space of Data-DBID FIFO
    //Read Requester signals 
-   reg                                              GaveBSCommand     ; // register indicates if a command has been given to BS
-   wire                                             ReadReqArbValid   ; 
-   wire                                             ReadReqArbReady   ;
-   wire                                             ReadReqV          ;
-   ReqFlit                                          ReadReqFlit       ;
-   wire                                             SigDeqRead        ;
-   wire                 [MEM_ADDR_WIDTH   - 1  : 0] SigReadAddr       ;
-   wire                 [MEM_ADDR_WIDTH   - 1  : 0] NextSrcAddr       ;
-   //Write Requester signals
-   wire                                             WriteReqArbValid  ; 
-   wire                                             WriteReqArbReady  ;
-   wire                                             WriteReqV         ;
-   ReqFlit                                          WriteReqFlit      ;
-   wire                                             SigDeqWrite       ;
-   wire                 [MEM_ADDR_WIDTH   - 1  : 0] SigWriteAddr      ;
-   wire                 [MEM_ADDR_WIDTH   - 1  : 0] NextDstAddr       ;
-   //Updater signal
-   wire                                             FULLCmplter       ;
-   //Arbiter signal
-   reg                                              AccessReg         ; //register to for arbitrate the order of access
+   reg                                                     GaveBSCommand     ; // register indicates if a command has been given to BS
+   wire                                                    ReadReqArbValid   ; 
+   wire                                                    ReadReqArbReady   ;
+   wire                                                    ReadReqV          ;
+   ReqFlit                                                 ReadReqFlit       ;
+   wire                                                    SigDeqRead        ;
+   wire                 [MEM_ADDR_WIDTH          - 1  : 0] SigReadAddr       ;
+   wire                 [MEM_ADDR_WIDTH          - 1  : 0] NextSrcAddr       ;
+   //Write Requester signal
+   wire                                                    WriteReqArbValid  ; 
+   wire                                                    WriteReqArbReady  ;
+   wire                                                    WriteReqV         ;
+   ReqFlit                                                 WriteReqFlit      ;
+   wire                                                    SigDeqWrite       ;
+   wire                 [MEM_ADDR_WIDTH          - 1  : 0] SigWriteAddr      ;
+   wire                 [MEM_ADDR_WIDTH          - 1  : 0] NextDstAddr       ;
+   //Updater signa
+   wire                                                    FULLCmplter       ;
+   //Arbiter signa
+   reg                                                     AccessReg         ; //register to for arbitrate the order of access
    
    //CommandFIFO FIFO (SrcAddr,DstAddr,BTS,SB,DescAddr,LastDescTrans)
    assign SigDeqCommand = SigDeqRead & SigDeqWrite ;
@@ -152,7 +150,7 @@ module CHIConverter#(
    assign SigEnqDBID  = (RspInbChan.RXRSPFLITV == 1 & (RspInbChan.RXRSPFLIT.Opcode == `DBIDResp | RspInbChan.RXRSPFLIT.Opcode == `CompDBIDResp) & RspCrdInbound != 0 );
    FIFO #(     
        .FIFO_WIDTH  ( `DBIDRespWidth + `RspErrWidth ),  //FIFO_WIDTH       
-       .FIFO_LENGTH ( DATA_FIFO_LENGTH              )   //FIFO_LENGTH      
+       .FIFO_LENGTH ( DBID_FIFO_LENGTH              )   //FIFO_LENGTH      
        )     
        FIFODBID  (     
        .RST      ( RST            ) ,      
@@ -174,12 +172,12 @@ module CHIConverter#(
                             DBIDRespErr     : SigDBIDPack.RespErr ,
                             DataRespErr     : DataErr               };
     
-    assign EnqueueCompleter = SigDeqDBID & (LastDescTrans | (SigDBIDPack.RespErr != `ErrOK & SigDBIDPack.RespErr != `ErrExclOK) | (DataErr != `ErrOK &DataErr != `ErrExclOK)) ; 
+    assign EnqueueCompleter = SigDeqDBID & (LastDescTrans | (SigDBIDPack.RespErr != `ErrOK & SigDBIDPack.RespErr != `ErrExclOK) | (DataErr != `ErrOK & DataErr != `ErrExclOK)) ; 
      
       Completer #(     
        .BRAM_ADDR_WIDTH ( BRAM_ADDR_WIDTH                      ) ,            
        .BRAM_NUM_COL    ( BRAM_NUM_COL                         ) ,        
-       .FIFO_Length     ( DATA_FIFO_LENGTH                     ) , 
+       .FIFO_Length     ( DBID_FIFO_LENGTH                     ) , 
        .FIFO_WIDTH      ( BRAM_ADDR_WIDTH + `RspErrWidth*2 + 1 )   // FIFO_WIDTH is DescAdd + RespErrorWidth + LastDescTrans     
        )
        myCompleter   (     
@@ -435,7 +433,7 @@ module CHIConverter#(
    //     V         //
    ///////////////////
    // Give an extra Crd in outbound Rsp Chanel
-   assign RspInbChan.RXRSPLCRDV = (!RST & ((GivenRspCrd  < DATA_FIFO_LENGTH) & (RspCrdInbound  < `MaxCrds))) ;
+   assign RspInbChan.RXRSPLCRDV = (!RST & ((GivenRspCrd  < DBID_FIFO_LENGTH) & (RspCrdInbound  < `MaxCrds))) ;
    
     // ****************** Data Sender ******************
    // Enable valid of CHI-DATA chanel 

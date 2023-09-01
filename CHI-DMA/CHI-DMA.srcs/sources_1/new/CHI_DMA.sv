@@ -20,6 +20,11 @@ import CHIFIFOsPkg ::*;
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
+  
+`ifndef RspErrWidth
+  `define RspErrWidth 2
+`endif
+
 `define StatusActive  1 
 
 
@@ -29,8 +34,18 @@ module CHI_DMA#(
   parameter BRAM_COL_WIDTH    = 32                          ,
   parameter BRAM_ADDR_WIDTH   = 10                          ,
   parameter DATA_WIDTH        = BRAM_NUM_COL*BRAM_COL_WIDTH ,
-  parameter CHI_DATA_WIDTH    = 64                          ,
-  parameter Chunk             = 5                           
+  parameter Chunk             = 5                           ,  // scheduling parameter
+//----------------------CHI-Converter-------------------------------------
+  parameter CMD_FIFO_LENGTH    = 32                         ,                        
+  parameter DBID_FIFO_LENGTH   = 32                         ,                        
+//-----------CHI-Parameters-----------------            
+  parameter MEM_ADDR_WIDTH     = 44                         ,                        
+  parameter CHI_DATA_WIDTH     = 64                         ,  //Bytes                
+  parameter QoS                = 8                          ,                        
+  parameter TgtID              = 2                          ,                        
+  parameter SrcID              = 1                          ,
+//----------------------Barrel SHifter------------------------------------
+  parameter DATA_FIFO_LENGTH    = 32                                                        
 //--------------------------------------------------------------------------
 )(
     input                                                            Clk                  ,//--- proc inp ---
@@ -66,6 +81,7 @@ module CHI_DMA#(
     Data_packet                           BRAMdinSched      ;
     wire                                  ValidArbFIFOSched ;
     wire                                  ReadyArbFIFOSched ;
+    wire                                  ReadyArbProc      ;       
     wire        [BRAM_ADDR_WIDTH - 1 : 0] WriteBackPointer  ;
     // CHI_Conv signals
     wire                                  CmdFIFOFULL       ;
@@ -181,7 +197,22 @@ module CHI_DMA#(
     ); 
     
     //CHI-Converter
-    CHIConverter CHI_Conv(
+    CHIConverter#(
+      //-----------------------------BRAM-Parameters------------------------------  
+      .BRAM_ADDR_WIDTH    (BRAM_ADDR_WIDTH     ),
+      .BRAM_NUM_COL       (BRAM_NUM_COL        ),
+      .BRAM_COL_WIDTH     (BRAM_COL_WIDTH      ),
+      //-----------------------------FIFOs-Parameters---------------------------
+      .CMD_FIFO_LENGTH     (CMD_FIFO_LENGTH    ),
+      .DBID_FIFO_LENGTH    (DBID_FIFO_LENGTH   ),
+      //-----------------------------CHI-Parameters-----------------------------
+      .MEM_ADDR_WIDTH      (MEM_ADDR_WIDTH     ),
+      .CHI_DATA_WIDTH      (CHI_DATA_WIDTH     ),
+      .QoS                 (QoS                ),
+      .TgtID               (TgtID              ),
+      .SrcID               (SrcID              )
+      //--------------------------------------------------------------------------          
+     )CHI_Conv(
      .Clk                (Clk                         ) ,
      .RST                (RST                         ) ,
      .DataBRAM           (BRAMdoutB                   ) , // from BRAM
@@ -210,20 +241,26 @@ module CHI_DMA#(
      .ValidDataBS        (ValidDataBS                 )  //-------end BS-------
     );
     // Barrel Shifter
-    BarrelShifter BS     (
-     .  RST              ( RST           ),
-     .  Clk              ( Clk           ),
-     .  CommandIn        ( CommandBS     ),//-- from CHI-Conv --
-     .  EnqueueIn        ( EnqueueIn     ),
-     .  ValidDataBS      ( ValidDataBS   ),//-------------------
-     .  DatInbChan       ( DatInbChan    ), // Inb Data Chan
-     .  BEOut            ( BEOut         ),//-- fror CHI-Conv --
-     .  DataOut          ( DataOutBS     ),
-     .  DataError        ( DataError     ),
-     .  DescAddr         ( DescAddrBS    ),
-     .  LastDescTrans    ( LastDescTrans ),
-     .  ReadyDataBS      ( ReadyDataBS   ),
-     .  FULLCmndBS       ( FULLCmndBS    ) //-------------------
+    BarrelShifter#(
+     .  CHI_DATA_WIDTH   (CHI_DATA_WIDTH   ),
+     .  BRAM_COL_WIDTH   (BRAM_COL_WIDTH   ),
+     .  BRAM_ADDR_WIDTH  (BRAM_ADDR_WIDTH  ),
+     .  CMD_FIFO_LENGTH  (CMD_FIFO_LENGTH  ),
+     .  DATA_FIFO_LENGTH (DATA_FIFO_LENGTH )
+     )BS(
+     .  RST              ( RST             ),
+     .  Clk              ( Clk             ),
+     .  CommandIn        ( CommandBS       ),//-- from CHI-Conv --
+     .  EnqueueIn        ( EnqueueIn       ),
+     .  ValidDataBS      ( ValidDataBS     ),//-------------------
+     .  DatInbChan       ( DatInbChan      ), // Inb Data Chan
+     .  BEOut            ( BEOut           ),//-- fror CHI-Conv --
+     .  DataOut          ( DataOutBS       ),
+     .  DataError        ( DataError       ),
+     .  DescAddr         ( DescAddrBS      ),
+     .  LastDescTrans    ( LastDescTrans   ),
+     .  ReadyDataBS      ( ReadyDataBS     ),
+     .  FULLCmndBS       ( FULLCmndBS      ) //-------------------
     );      
 endmodule
 

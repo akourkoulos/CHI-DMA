@@ -25,11 +25,11 @@ ReadyDataBS output. If BS cant accept more commands it asserts the FULLCmndBS ou
 module BarrelShifter#(
 //--------------------------------------------------------------------------
   parameter CHI_DATA_WIDTH      = 64                             , // Bytes
-  parameter SHIFT_WIDTH         = $clog2(CHI_DATA_WIDTH)         , // log2(CHI_DATA_WIDTH)
   parameter BRAM_COL_WIDTH      = 32                             ,
   parameter BRAM_ADDR_WIDTH     = 10                             ,
   parameter CMD_FIFO_LENGTH     = 32                             ,
-  parameter DATA_FIFO_LENGTH    = 32                             
+  parameter DATA_FIFO_LENGTH    = 32                             ,
+  parameter SHIFT_WIDTH         = $clog2(CHI_DATA_WIDTH)           // log2(CHI_DATA_WIDTH)
 //--------------------------------------------------------------------------
 ) ( 
     input                                                        RST           ,

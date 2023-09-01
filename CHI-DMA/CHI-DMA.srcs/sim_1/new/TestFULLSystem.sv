@@ -39,25 +39,35 @@ import CHIFIFOsPkg::*;
 `define StatusError       2
 
 module TestFULLSystem#(
-//--------------------------------------------------------------------------
-  parameter BRAM_NUM_COL        = 8    , // As the Data_packet fields
-  parameter BRAM_COL_WIDTH      = 32   , // As the Data_packet field width
-  parameter BRAM_ADDR_WIDTH     = 10   , // Addr Width in bits : 2 **BRAM_ADDR_WIDTH = RAM Depth
-  parameter CHI_DATA_WIDTH      = 64   ,
-  parameter ADDR_WIDTH_OF_DATA  = 6    , // log2(CHI_DATA_WIDTH)  
-  parameter MAX_BytesToSend     = 3500 ,
-  parameter P1_NUM_OF_TRANS     = 1    , // Number of inserted transfers for each phase
-  parameter P2_NUM_OF_TRANS     = 1    ,  
-  parameter P3_NUM_OF_TRANS     = 1    ,  
-  parameter P4_NUM_OF_TRANS     = 1    ,  
-  parameter P5_NUM_OF_TRANS     = 250  ,
-  parameter P6_NUM_OF_TRANS     = 250  ,  
-  parameter P7_NUM_OF_TRANS     = 15   ,  
-  parameter P8_NUM_OF_TRANS     = 45   ,  
-  parameter P9_NUM_OF_TRANS     = 450  ,   
-  parameter LastPhase           = 9    ,// Number of Last Phase
-  parameter PHASE_WIDTH         = 4    , // width of register that keeps the phase
-  parameter Test_FIFO_Length    = 128 
+//---------------DMA PARAMETERS---------------------------------------------
+  parameter BRAM_NUM_COL        = 8                           ,
+  parameter BRAM_COL_WIDTH      = 32                          ,
+  parameter BRAM_ADDR_WIDTH     = 10                          ,
+  parameter DATA_WIDTH          = BRAM_NUM_COL*BRAM_COL_WIDTH ,
+  parameter Chunk               = 5                           ,  // scheduling parameter
+  parameter CMD_FIFO_LENGTH     = 32                          ,                        
+  parameter DBID_FIFO_LENGTH    = 32                          ,                  
+  parameter MEM_ADDR_WIDTH      = 44                          ,                        
+  parameter CHI_DATA_WIDTH      = 64                          ,  //Bytes                
+  parameter QoS                 = 8                           ,                        
+  parameter TgtID               = 2                           ,                        
+  parameter SrcID               = 1                           ,
+  parameter DATA_FIFO_LENGTH    = 32                          ,                                                    
+//---------------------SIMULATION PARAMETERS------------------------------------------
+  parameter ADDR_WIDTH_OF_DATA  = $clog2(CHI_DATA_WIDTH)      , // log2(CHI_DATA_WIDTH)  
+  parameter MAX_BytesToSend     = 3500                        ,
+  parameter P1_NUM_OF_TRANS     = 1                           , // Number of inserted transfers for each phase
+  parameter P2_NUM_OF_TRANS     = 1                           ,  
+  parameter P3_NUM_OF_TRANS     = 1                           ,  
+  parameter P4_NUM_OF_TRANS     = 1                           ,  
+  parameter P5_NUM_OF_TRANS     = 250                         ,
+  parameter P6_NUM_OF_TRANS     = 250                         ,  
+  parameter P7_NUM_OF_TRANS     = 15                          ,  
+  parameter P8_NUM_OF_TRANS     = 45                          ,  
+  parameter P9_NUM_OF_TRANS     = 450                         ,   
+  parameter LastPhase           = 9                           ,// Number of Last Phase
+  parameter PHASE_WIDTH         = 4                           , // width of register that keeps the phase
+  parameter Test_FIFO_Length    = 128                      
 //--------------------------------------------------------------------------
 );
 
@@ -78,22 +88,41 @@ module TestFULLSystem#(
 
  
   
-   CHI_DMA DMA     (
-     .Clk          (Clk          ) ,
-     .RST          (RST          ) ,
-     .weA          (weA          ) ,
-     .addrA        (addrA        ) ,
-     .dinA         (dinA         ) ,
-     .BRAMdoutA    (BRAMdoutA    ) ,
-     .ReqChan      (ReqChan      ) ,
-     .RspOutbChan  (RspOutbChan  ) ,
-     .DatOutbChan  (DatOutbChan  ) ,
-     .RspInbChan   (RspInbChan   ) ,
-     .DatInbChan   (DatInbChan   )   
+   CHI_DMA#(
+     .BRAM_NUM_COL     (BRAM_NUM_COL     ),
+     .BRAM_COL_WIDTH   (BRAM_COL_WIDTH   ),
+     .BRAM_ADDR_WIDTH  (BRAM_ADDR_WIDTH  ),
+     .DATA_WIDTH       (DATA_WIDTH       ),
+     .Chunk            (Chunk            ),
+     .CMD_FIFO_LENGTH  (CMD_FIFO_LENGTH  ),
+     .DBID_FIFO_LENGTH (DBID_FIFO_LENGTH ),
+     .MEM_ADDR_WIDTH   (MEM_ADDR_WIDTH   ),
+     .CHI_DATA_WIDTH   (CHI_DATA_WIDTH   ),
+     .QoS              (QoS              ),
+     .TgtID            (TgtID            ),
+     .SrcID            (SrcID            ),
+     .DATA_FIFO_LENGTH (DATA_FIFO_LENGTH )
+   
+    )DMA (
+     .Clk              (Clk              ) ,
+     .RST              (RST              ) ,
+     .weA              (weA              ) ,
+     .addrA            (addrA            ) ,
+     .dinA             (dinA             ) ,
+     .BRAMdoutA        (BRAMdoutA        ) ,
+     .ReqChan          (ReqChan          ) ,
+     .RspOutbChan      (RspOutbChan      ) ,
+     .DatOutbChan      (DatOutbChan      ) ,
+     .RspInbChan       (RspInbChan       ) ,
+     .DatInbChan       (DatInbChan       )   
     );
     
     
    PseudoCPU #(
+   .BRAM_NUM_COL       (BRAM_NUM_COL    ),
+   .BRAM_COL_WIDTH     (BRAM_COL_WIDTH  ),
+   .BRAM_ADDR_WIDTH    (BRAM_ADDR_WIDTH ),
+   .CHI_DATA_WIDTH     (CHI_DATA_WIDTH  ),
    .P1_NUM_OF_TRANS    (P1_NUM_OF_TRANS ),
    .P2_NUM_OF_TRANS    (P2_NUM_OF_TRANS ),
    .P3_NUM_OF_TRANS    (P3_NUM_OF_TRANS ),
@@ -118,8 +147,11 @@ module TestFULLSystem#(
     );
   
   // Simple CHI Responser
-   Simple_CHI_Responser#(
-     .FIFO_Length(Test_FIFO_Length)
+   CHI_Responser#(
+     .FIFO_Length         (Test_FIFO_Length                  ),
+     .BRAM_COL_WIDTH      (BRAM_COL_WIDTH                    ),
+     .MEM_ADDR_WIDTH      (MEM_ADDR_WIDTH                    ),
+     .CHI_DATA_WIDTH      (CHI_DATA_WIDTH                    )
    ) Simp_CHI_RSP         (
      .Clk                 (Clk                               ) ,
      .RST                 (RST                               ) ,

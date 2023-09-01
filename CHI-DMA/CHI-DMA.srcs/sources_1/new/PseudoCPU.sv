@@ -31,7 +31,6 @@ module PseudoCPU#(
   parameter BRAM_ADDR_WIDTH   = 10                          ,
   parameter CHI_DATA_WIDTH    = 64                          ,
   parameter MAX_BytesToSend   = 2000                        ,
-  parameter DELAY_WIDTH       = 7                           , // width of counter used for delay
   parameter PHASE_WIDTH       = 4                           , // width of register that keeps the phase
   parameter LastPhase         = 9                           , // Number of Last Phase
   parameter P1_NUM_OF_TRANS   = 1                           , // Number of inserted transfers for each phase

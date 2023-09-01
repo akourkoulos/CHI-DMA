@@ -28,8 +28,8 @@ module TestBarrelShifte#(
   parameter SHIFT_WIDTH         = $clog2(CHI_DATA_WIDTH), // log2(CHI_DATA_WIDTH)  
   parameter BRAM_COL_WIDTH      = 32                    ,
   parameter BRAM_ADDR_WIDTH     = 10                    ,
-  parameter FIFO_LENGTH         = 32                    ,
   parameter DATA_FIFO_LENGTH    = 32                    ,
+  parameter CMD_FIFO_LENGTH     = 32                    ,
   parameter Chunk               = 5                     ,
   parameter NUM_OF_REPETITIONS  = 100000
 //--------------------------------------------------------------------------
@@ -50,7 +50,14 @@ module TestBarrelShifte#(
      
     localparam period           = 20   ;   // duration for each bit = 20 * timescale = 20 * 1 ns  = 20ns  
     
-    BarrelShifter UUT (
+    BarrelShifter#(
+     .  CHI_DATA_WIDTH  (CHI_DATA_WIDTH             ),
+     .  BRAM_COL_WIDTH  (BRAM_COL_WIDTH             ),
+     .  BRAM_ADDR_WIDTH (BRAM_ADDR_WIDTH            ),
+     .  CMD_FIFO_LENGTH (CMD_FIFO_LENGTH            ),
+     .  DATA_FIFO_LENGTH(DATA_FIFO_LENGTH           )
+    
+     )UUT(
      .  RST             (  RST                      ),
      .  Clk             (  Clk                      ),
      .  CommandIn       (  CommandIn                ),

@@ -47,8 +47,14 @@ module TestCHIConverter#(
   parameter BRAM_ADDR_WIDTH    = 10  ,
   parameter BRAM_NUM_COL       = 8   , // As the Data_packet fields
   parameter BRAM_COL_WIDTH     = 32  ,
+  parameter CMD_FIFO_LENGTH    = 32  ,
+  parameter DBID_FIFO_LENGTH   = 32  ,
   parameter MEM_ADDR_WIDTH     = 44  ,
   parameter CHI_DATA_WIDTH     = 64  , //Bytes
+  parameter QoS                 = 8  , 
+  parameter TgtID               = 2  , 
+  parameter SrcID               = 1  ,  
+//--------Simulation parameters--------  
   parameter Chunk              = 5   ,
   parameter NUM_OF_REPETITIONS = 250 ,
   parameter FIFO_Length        = 128
@@ -85,7 +91,21 @@ module TestCHIConverter#(
     wire                                   LastDescTrans ;
     wire        [BRAM_ADDR_WIDTH  - 1 : 0] DescAddr      ;
 
-    CHIConverter UUT     (
+    CHIConverter #(    
+//--------------------------------------------------------------------------
+//-----------------------------BRAM-Parameters------------------------------  
+   .BRAM_ADDR_WIDTH   (BRAM_ADDR_WIDTH   )            ,
+   .BRAM_NUM_COL      (BRAM_NUM_COL      )            , //As the Data_packet fields
+   .BRAM_COL_WIDTH    (BRAM_COL_WIDTH    )            ,
+   .CMD_FIFO_LENGTH   (CMD_FIFO_LENGTH   )            ,
+   .DBID_FIFO_LENGTH  (DBID_FIFO_LENGTH  )            ,
+   .MEM_ADDR_WIDTH    (MEM_ADDR_WIDTH    )            , 
+   .CHI_DATA_WIDTH    (CHI_DATA_WIDTH    )            , //Bytes
+   .QoS               (QoS               )            , 
+   .TgtID             (TgtID             )            , 
+   .SrcID             (SrcID             )              
+
+)UUT(
      .Clk                (Clk                      ) ,
      .RST                (RST                      ) ,
      .DataBRAM           (DataBRAM                 ) ,

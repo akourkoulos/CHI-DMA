@@ -17,29 +17,28 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_msg_config -id {Common 17-41} -limit 10000000
 create_project -in_memory -part xcvu37p-fsvh2892-2L-e
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/Aggelos/Desktop/github/Chi-DMA/CHI-DMA/CHI-DMA.cache/wt [current_project]
-set_property parent.project_path C:/Users/Aggelos/Desktop/github/Chi-DMA/CHI-DMA/CHI-DMA.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/Aggelos/Desktop/github/CHI-DMA/CHI-DMA/CHI-DMA/CHI-DMA.cache/wt [current_project]
+set_property parent.project_path C:/Users/Aggelos/Desktop/github/CHI-DMA/CHI-DMA/CHI-DMA/CHI-DMA.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo c:/Users/Aggelos/Desktop/github/Chi-DMA/CHI-DMA/CHI-DMA.cache/ip [current_project]
+set_property ip_output_repo c:/Users/Aggelos/Desktop/github/CHI-DMA/CHI-DMA/CHI-DMA/CHI-DMA.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib -sv {
-  C:/Users/Aggelos/Desktop/github/Chi-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/Arbiter.sv
-  C:/Users/Aggelos/Desktop/github/Chi-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/my_package.sv
-  C:/Users/Aggelos/Desktop/github/Chi-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/ArbiterBRAM.sv
-  C:/Users/Aggelos/Desktop/github/Chi-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/BarrelShifter.sv
-  C:/Users/Aggelos/Desktop/github/Chi-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/CHIConverter.sv
-  C:/Users/Aggelos/Desktop/github/Chi-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/Completer.sv
-  C:/Users/Aggelos/Desktop/github/Chi-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/FIFO_Addr.sv
-  C:/Users/Aggelos/Desktop/github/Chi-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/RegSpace.sv
-  C:/Users/Aggelos/Desktop/github/Chi-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/Scheduler.sv
-  C:/Users/Aggelos/Desktop/github/Chi-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/CHI_DMA.sv
+  C:/Users/Aggelos/Desktop/github/CHI-DMA/CHI-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/Arbiter.sv
+  C:/Users/Aggelos/Desktop/github/CHI-DMA/CHI-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/my_package.sv
+  C:/Users/Aggelos/Desktop/github/CHI-DMA/CHI-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/ArbiterBRAM.sv
+  C:/Users/Aggelos/Desktop/github/CHI-DMA/CHI-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/BarrelShifter.sv
+  C:/Users/Aggelos/Desktop/github/CHI-DMA/CHI-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/CHIConverter.sv
+  C:/Users/Aggelos/Desktop/github/CHI-DMA/CHI-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/Completer.sv
+  C:/Users/Aggelos/Desktop/github/CHI-DMA/CHI-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/FIFO_Addr.sv
+  C:/Users/Aggelos/Desktop/github/CHI-DMA/CHI-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/RegSpace.sv
+  C:/Users/Aggelos/Desktop/github/CHI-DMA/CHI-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/Scheduler.sv
+  C:/Users/Aggelos/Desktop/github/CHI-DMA/CHI-DMA/CHI-DMA/CHI-DMA.srcs/sources_1/new/CHI_DMA.sv
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -49,8 +48,8 @@ read_verilog -library xil_defaultlib -sv {
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/Aggelos/Desktop/github/Chi-DMA/CHI-DMA/CHI-DMA.srcs/constrs_1/new/Constr.xdc
-set_property used_in_implementation false [get_files C:/Users/Aggelos/Desktop/github/Chi-DMA/CHI-DMA/CHI-DMA.srcs/constrs_1/new/Constr.xdc]
+read_xdc C:/Users/Aggelos/Desktop/github/CHI-DMA/CHI-DMA/CHI-DMA/CHI-DMA.srcs/constrs_1/new/Constr.xdc
+set_property used_in_implementation false [get_files C:/Users/Aggelos/Desktop/github/CHI-DMA/CHI-DMA/CHI-DMA/CHI-DMA.srcs/constrs_1/new/Constr.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
