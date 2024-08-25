@@ -1,22 +1,29 @@
 ## Introduction 
-A Direct Memory Access (DMA) feature enables
-devices to efficiently transfer data to and from main memory
-without involving the central processing unit (CPU). 
-This bypassing capability is particularly beneficial for handling substantial
-data volumes, allowing the CPU to focus on other tasks. This
- work focuses on the meticulous HDL design, optimization, and
-verification of an Intellectual Property Core (IP Core) DMA
-engine, that complies with the AMBA 5 Coherent Hub Interface
-(CHI) protocol. This DMA controller is designed to be able to
-handle a parametrizable amount of memory transfers, generically
-schedule them to meet user requirements and transfer the
-appropriate data at any address byte offset in memory. Since
-it is designed to operate with systems employing AMBA 5 CHI
-architecture, it can utilize the benefits offered by CHI as well as
-the features of the DMA architecture, and thus can prove a useful
-tool for modern state-of-the-art systems. This  work presents a
-comprehensive demonstration of the investigated design which
-is meticulously implemented and optimized in SystemVerilog
-HDL. Rigorous testing and performance analysis have confirmed
-its great achievement of high speed and resource utilization
-efficiency
+This work presents a comprehensive design of the architectural 
+elements of a CHI-compliant DMA engine in the form
+of an IP core. The engine is capable to efficiently move data
+between memory locations, achieving maximum throughput in
+the majority of scenarios, thereby elevating the performance of
+systems that integrate it. The DMA controller is designed as an
+IO Coherent node -in CHI nomenclature- and communicates
+through the AMBA 5 CHI protocol, exploiting the cache-
+coherence feature of CHI which improves memory access
+time. The engine’s architecture is meticulously realized using
+the SystemVerilog Hardware Description Language (HDL) and
+its functionality is validated through thorough behavioral simulations.
+Importantly, the proposed engine has been designed to
+be generic and parameterized, to allow effortless adjustments
+to the acceptable number of transfers or scheduling chunk size
+to align with specific application requirements. Moreover, it
+consolidates all communication logic within a single module,
+ensuring easy replacement in case a newer protocol surpasses
+CHI due to technological advancements, maintaining the rest
+of the design. The throughput and latency, which are independent
+of interconnection or memory delays, are measured
+with the use of behavioral simulation. We also proceed to
+synthesizing the design using Xiling/AMD FPGA tool flow,
+collecting useful utilization information, i.e. hardware resource
+demands, resulting in 14262 LUTS 33693 CLB registers and
+a maximum frequency of 228 MHz. These results demonstrate
+efficient resource utilization and high operation speed in this
+demanding implementation.
