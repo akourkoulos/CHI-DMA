@@ -156,6 +156,19 @@ from the reception of transfer instructions remained constant
 across all cases, amounting to 3 cycles × 4.367 ns = 13.1
 ns. Despite this consistent latency, the throughput exhibited
 variation depending on the specific scenario.
-In TABLE II the summary of the performance in each
+In TABLE I the summary of the performance in each
 scenario can be seen.
 
+|![alt text](https://github.com/akourkoulos/CHI-DMA/blob/main/chi-Doc-Draw/DMA%20DRAWINGS/Drawings/performance.png)|
+|:--:|
+|*TABLE I Performance*|
+
+The synthesis tool provides valuable insights into the resource
+utilization expected from the RTL design, depending
+on the specific FPGA employed. Table II outlines both the
+resource demands of the DMA and offers a rough breakdown
+of utilization contributions from individual modules.
+
+|![alt text](https://github.com/akourkoulos/CHI-DMA/blob/main/chi-Doc-Draw/DMA%20DRAWINGS/Drawings/performance.png)|
+|:--:|
+|*TABLE II Utilization*|
