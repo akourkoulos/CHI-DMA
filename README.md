@@ -177,4 +177,4 @@ of utilization contributions from individual modules.
 
 See the source and simulation files at: https://github.com/akourkoulos/CHI-DMA/tree/main/CHI-DMA/CHI-DMA.srcs
 
-Read the detailed description of CHI-DMAC at 
+Read the detailed description of CHI-DMAC at: https://github.com/akourkoulos/CHI-DMA/blob/main/Kourkoulos_Thesis_Latex_Template%20(2).pdf
