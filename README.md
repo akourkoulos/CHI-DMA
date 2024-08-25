@@ -49,6 +49,7 @@ given the impracticability of utilizing the interrupt method
 within this architecture due to scalability constraints.
 
 ![alt text](https://github.com/akourkoulos/CHI-DMA/blob/main/chi-Doc-Draw/DMA%20DRAWINGS/Drawings/DMA.png)
+*Design of DMA*
 
 The basic components of the DMA as seen in Fig. above are:
 - DescBRAM (BRAM) : stores transfer’s instructions
@@ -105,3 +106,27 @@ to the DMA a fixed number of cycles post each request
 and provides unlimited amount of credits. This approach
 allows for precise throughput and latency measurements that
 are unaffected by interconnect and memory delays.
+The waveform in Fig. 7 illustrates a complete small transfer
+operation. Initially, the CPU assigns a transfer to the DMA
+using a BRAM port. As the transfer necessitates single read
+and write transactions, the DMA issues two requests in con-
+secutive cycles, post a brief processing latency. Given the
+simulation’s design, the data response arrives on the inbound
+data channel after a consistent delay, concluding the read
+transaction. In the subsequent cycle, the CompDBIDResp
+response is received on the inbound response channel, enabling
+the DMA to proceed the operation. With both data and DBID
+responses, the engine transmits the data for writing on the
+outbound data channel, finalizing both the transaction and the
+entire transfer. Noteworthy, is that the activation of the valid
+signal on the corresponding channel indicates the transmission
+of each FLIT.
+Another transfer, which requires multiple read and write
+transactions using the same simulation approach, is depicted
+in waveform 8. In this case, after receiving and processing
+the transfer from CPU, DMA initiates consecutive transmis-
+sions on request channel. The read and write requests are
+sent alternately, resulting in sequential responses on inbound
+response and data channels, respectively. Upon receiving read
+and write responses, the engine sends out the outbound data,
+incrementally completing the extensive data transfer.
