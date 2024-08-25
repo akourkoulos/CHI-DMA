@@ -169,6 +169,7 @@ on the specific FPGA employed. Table II outlines both the
 resource demands of the DMA and offers a rough breakdown
 of utilization contributions from individual modules.
 
-|![alt text](https://github.com/akourkoulos/CHI-DMA/blob/main/chi-Doc-Draw/DMA%20DRAWINGS/Drawings/utilization.png)|
+|![alt text](https://github.com/akourkoulos/CHI-DMA/blob/main/chi-Doc-Draw/DMA%20DRAWINGS/Drawings/Utilization.png)|
 |:--:|
 |*TABLE II Utilization*|
+
