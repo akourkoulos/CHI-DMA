@@ -48,8 +48,7 @@ about a finished transfer by polling the corresponding Status,
 given the impracticability of utilizing the interrupt method
 within this architecture due to scalability constraints.
 
-![alt text](https://github.com/akourkoulos/CHI-DMA/blob/main/chi-Doc-Draw/DMA%20DRAWINGS/Drawings/DMA.png)
-*Design of DMA*
+![alt text](https://github.com/akourkoulos/CHI-DMA/blob/main/chi-Doc-Draw/DMA%20DRAWINGS/Drawings/DMA.png)*Design of DMA*
 
 The basic components of the DMA as seen in Fig. above are:
 - DescBRAM (BRAM) : stores transfer’s instructions
