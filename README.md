@@ -27,3 +27,25 @@ demands, resulting in 14262 LUTS 33693 CLB registers and
 a maximum frequency of 228 MHz. These results demonstrate
 efficient resource utilization and high operation speed in this
 demanding implementation.
+
+## DMAC ARCHITECTURE AND DESIGN
+The proposed DMA serves the purpose of data transfer
+between memory locations employing the CHI communication
+protocol. The data transfer procedure initiates upon the
+transmission of necessary instructions to the DMA. Notably,
+the DMA supports concurrent capability by handling multiple
+transfers simultaneously, allowing new instructions to be
+accepted prior to the completion of previous transfers. This
+concurrency is realized through the utilization of a BRAM,
+with each of its addresses storing data associated with a
+memory transfer. Thus, the only signals needed for assigning
+a memory transfer to the DMA are those of a BRAM port.
+To initiate a new transfer, the processor identifies an available
+Descriptor (address) in the BRAM by examining its Status.
+Subsequently, the appropriate transfer data is written to the
+identified address. Similarly, the processor can be notified
+about a finished transfer by polling the corresponding Status,
+given the impracticability of utilizing the interrupt method
+within this architecture due to scalability constraints.
+
+
