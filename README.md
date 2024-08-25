@@ -122,6 +122,12 @@ outbound data channel, finalizing both the transaction and the
 entire transfer. Noteworthy, is that the activation of the valid
 signal on the corresponding channel indicates the transmission
 of each FLIT.
+
+
+|![alt text](https://github.com/akourkoulos/CHI-DMA/blob/main/chi-Doc-Draw/DMA%20DRAWINGS/Drawings/waveform1.png)|
+|:--:|
+|*Fig. 2 1-Read 1-Write Transfer*|
+
 Another transfer, which requires multiple read and write
 transactions using the same simulation approach, is depicted
 in waveform 3. In this case, after receiving and processing
@@ -132,10 +138,24 @@ response and data channels, respectively. Upon receiving read
 and write responses, the engine sends out the outbound data,
 incrementally completing the extensive data transfer.
 
-|![alt text](https://github.com/akourkoulos/CHI-DMA/blob/main/chi-Doc-Draw/DMA%20DRAWINGS/Drawings/waveform1.png)|
-|:--:|
-|*Fig. 2 1-Read 1-Write Transfer*|
-
 |![alt text](https://github.com/akourkoulos/CHI-DMA/blob/main/chi-Doc-Draw/DMA%20DRAWINGS/Drawings/waveform2.png)|
 |:--:|
 |*Fig. 3 Multi-Read-Write Transfer*|
+
+## RESULTS
+
+The
+FPGA part utilized for this purpose was the Virtex UltraScale+
+“xcvu37p-fsvh2892-2L-e”, as it is one of the most high-end
+FPGA available. The most crucial delay within the design,
+noted as the critical path, was determined to be 4.367 ns.
+This, in turn, translates to a maximum operational frequency
+of 228.99 MHz, forming the basis for assessing system performance.
+The DMA’s latency for initiating data transfers starting
+from the reception of transfer instructions remained constant
+across all cases, amounting to 3 cycles × 4.367 ns = 13.1
+ns. Despite this consistent latency, the throughput exhibited
+variation depending on the specific scenario.
+In TABLE II the summary of the performance in each
+scenario can be seen.
+
